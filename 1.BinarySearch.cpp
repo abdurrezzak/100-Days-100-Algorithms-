@@ -4,7 +4,10 @@
  * and searches the number user enters in the array using
  * Binary Search Algorithm
  *
- *  Coded by: Abdurrezak EFE.
+ * The time complexity is O(nlogn) due to sorting. However, the sorting is just for demonstration of binary search.
+ * Normally, time complexity of binary search is O(logn)
+ *  
+ *      Coded by: Abdurrezak EFE
  *
  * */
 
