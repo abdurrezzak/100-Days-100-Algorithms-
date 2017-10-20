@@ -1,11 +1,10 @@
 /*
  * This program takes an array from the user
  * sorts it
- * and searches the number user enters in the array using
- * Binary Search Algorithm
- *
+ * and searches the number user enters in the array using Binary Search Algorithm
  * The time complexity is O(nlogn) due to sorting. However, the sorting is just for demonstration of binary search.
  * Normally, time complexity of binary search is O(logn)
+ * For more information about Binary Search Algorithm: https://en.wikipedia.org/wiki/Binary_search_algorithm
  *  
  *      Coded by: Abdurrezak EFE
  *
@@ -15,27 +14,19 @@
 #include <algorithm>
 using namespace std;
 
-int bs(int arr[], int l, int r, int n)
+int bs(int arr[], int l, int r, int n) //binary search function
 {
-
     if(r>=l)
     {
         int mid = (l+r)/2;
-
         if(arr[mid] == n)
             return mid;
-
         if(arr[mid] > n)
             return bs(arr, l, mid-1, n);
-
         return bs(arr,mid+1,r,n);
-
     }
-
     return -1;
-
 }
-
 
 int main()
 {
@@ -55,5 +46,4 @@ int main()
     cin >> n;
 
     cout << "The number is in: " <<  bs(arr, 0, k-1, n) << endl;
-
 }
