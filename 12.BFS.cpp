@@ -1,3 +1,9 @@
+/*
+ * This program applies BFS on a graph constructed from the inputs of the user
+ *
+ *      Coded by: Abdurrezak EFE
+ *
+ * */
 #include <iostream>
 #include <algorithm>
 #include <vector>
