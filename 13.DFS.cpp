@@ -16,7 +16,7 @@ using namespace std;
 class Graph{
 
     vector<vector<int>> edge;
-    vector<int> color; // 0 black(finished node), 1 white(neither visited nor finished node)
+    vector<int> color; // 1 black(finished node), 0 white(neither visited nor finished node)
 
 public:
 
@@ -24,20 +24,21 @@ public:
     {
         edge.resize(v);
         color.resize(v);
-        for(int i=0;i<v;i++) //initializing nodes' colors
-            color[i] = 1;
+        for(int i=0;i<edge.size();i++) //initializing nodes' colors
+            color[i] = 0;
     }
 
-    void add_edge(int v, int u)
+    void add_edge(int u, int v)
     {
         //adding from both directions makes it undirected
-        edge[v].push_back(u);
+        //edge[v].push_back(u);
         edge[u].push_back(v);
     }
 
     void DFS(int s) //dfs operation
     {
-        if(!color[s])
+
+        if(color[s])
             return;
 
         stack<int> st;
@@ -46,12 +47,16 @@ public:
         while(!st.empty())
         {
             s = st.top();
-            if(color[s] == 0)
-                continue;
-            color[s] = 0, cout << s+1 <<  " ";
             st.pop();
+
+            if(!color[s])
+            {
+                cout << s << " ";
+                color[s] = 1;
+            }
+
             for(int i=0;i<edge[s].size();i++)
-                if(color[edge[s][i]] == 1)
+                if(color[edge[s][i]] == 0)
                     st.push(edge[s][i]);
         }
     }
@@ -74,7 +79,8 @@ int main()
     for(int i=0;i<e;i++)
         cin >> u >> w, g.add_edge(u,w);
 
+    cout << endl;
 
-    for(int i=0;i<v;i++) //this for prevents our dfs from not traversing on non-connected parts
-        g.DFS(i); //starting DFS from vertex i
+    for(int i=0;i<v;i++)
+        g.DFS(i);
 }
